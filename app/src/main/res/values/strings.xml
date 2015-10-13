@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RobotLove</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="login.email.hint">Email</string>
+    <string name="login.password.hint">Password</string>
+    <string name="login.button.label">Login</string>
+    <string name="login.link_signup.text">No account yet? Create one</string>
+    <string name="login.email.error">Invalid email address</string>
+    <string name="login.password.error">No empty password</string>
 </resources>
