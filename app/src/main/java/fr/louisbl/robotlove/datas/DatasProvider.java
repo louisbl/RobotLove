@@ -9,6 +9,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.squareup.otto.Subscribe;
 
+import fr.louisbl.robotlove.BuildConfig;
 import fr.louisbl.robotlove.user.User;
 import fr.louisbl.robotlove.user.UserAuthenticateEvent;
 import fr.louisbl.robotlove.user.UserLoginEvent;
@@ -17,7 +18,7 @@ import hugo.weaving.DebugLog;
 
 public class DatasProvider implements Firebase.AuthResultHandler {
     private static final DatasProvider DATAS = new DatasProvider();
-    private static final String FIREBASE_URL = "https://glowing-torch-7716.firebaseio.com/";
+    private static final String FIREBASE_URL = BuildConfig.FIREBASE_URL;
     private Context mContext;
 
     private final Firebase mFirebase;

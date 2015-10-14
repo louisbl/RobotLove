@@ -5,6 +5,7 @@ import android.app.Application;
 import com.firebase.client.Firebase;
 
 import fr.louisbl.robotlove.datas.DatasProvider;
+import fr.louisbl.robotlove.datas.NearbyProvider;
 
 public class RobotLoveApplication extends Application {
     @Override
@@ -13,5 +14,6 @@ public class RobotLoveApplication extends Application {
 
         Firebase.setAndroidContext(this);
         DatasProvider.setAndroidContext(this);
+        NearbyProvider.setAndroidContext(this);
     }
 }

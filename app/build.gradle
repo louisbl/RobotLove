@@ -1,10 +1,26 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.hugo'
 
+project.ext {
+    firebaseUrlRelease = ""
+    firebaseUrlDebug = ""
+}
+
+if (new File('app/secrets.gradle').exists()) {
+    apply from: 'secrets.gradle'
+}
+
 android {
+    signingConfigs {
+        config {
+            keyAlias 'robotLove'
+            keyPassword 'empire'
+            storeFile file('D:/robotLove.jks')
+            storePassword 'empire'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
-
     defaultConfig {
         applicationId "fr.louisbl.robotlove"
         minSdkVersion 15
@@ -16,6 +32,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "FIREBASE_URL", '"' + firebaseUrlRelease + '"'
+        }
+        debug {
+            buildConfigField "String", "FIREBASE_URL", '"' + firebaseUrlDebug + '"'
         }
     }
     dexOptions {
@@ -33,12 +53,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup:otto:1.3.8'
     compile 'com.firebase:firebase-client-android:2.3.1'
+    compile 'com.google.android.gms:play-services:8.1.0'
 }
 
